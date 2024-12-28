@@ -1,14 +1,11 @@
-import sqlite3  # SQLite library for database handling
+import sqlite3
 import openai
 
-# Initialize the database
 def init_db():
     # Connect to SQLite database (it will create the database file if it doesn't exist)
     conn = sqlite3.connect("faq_system.db")
-    
     # Create a cursor object to execute SQL commands
     cursor = conn.cursor()
-    
     # SQL command to create the 'logs' table
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS logs (
@@ -23,14 +20,15 @@ def init_db():
     conn.commit()
     conn.close()
     print("Database initialized successfully!")
-
 # Get user input
 def get_user_input():
     question = input("Enter your question (or type 'exit' to quit): ")
     return question
 
 # Get ChatGPT response
-openai.api_key = "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"  # Replace with your OpenAI API key
+openai.api_key = "sk-project"  
+ # Replace with your OpenAI API key. 
+ #  The API key requires a valid OpenAI account with a paid subscription for usage.
 
 def get_chatgpt_response(question):
     try:
