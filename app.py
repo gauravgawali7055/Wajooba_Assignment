@@ -1,6 +1,10 @@
 import sqlite3
 import openai
+from dotenv import load_dotenv
+import os
 
+# Load the .env file
+load_dotenv()
 def init_db():
     # Connect to SQLite database (it will create the database file if it doesn't exist)
     conn = sqlite3.connect("faq_system.db")
@@ -26,7 +30,7 @@ def get_user_input():
     return question
 
 # Get ChatGPT response
-openai.api_key = "sk-project"  
+openai.api_key = os.getenv("OPENAI_API_KEY") 
  # Replace with your OpenAI API key. 
  #  The API key requires a valid OpenAI account with a paid subscription for usage.
 
